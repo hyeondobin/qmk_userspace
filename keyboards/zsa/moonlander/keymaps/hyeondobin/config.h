@@ -19,3 +19,8 @@
 #pragma once
 
 #define ORYX_CONFIGURATOR
+#define TAPPING_TERM 280
+#define QUICK_TAP_TERM 	175
+#define FLOW_TAP_TERM 150
+#define PERMISSIVE_HOLD
+#define COMBO_ONLY_FROM_LAYER 0

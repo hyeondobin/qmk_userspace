@@ -1,0 +1,34 @@
+// shifted numbers
+//   name                   key                     combo
+COMB(AT,                    KC_AT,                  KC_L,           ALT_T(KC_R))
+COMB(HASH,                  KC_HASH,                KC_D,           SFT_T(KC_T))
+COMB(DOLLAR,                KC_DLR,                 KC_C,           CTL_T(KC_S))
+COMB(PERCENT,               KC_PERC,                KC_V,           KC_G)
+COMB(CIRCUMFLEX,            KC_CIRC,                KC_J,           KC_P)
+COMB(PLUS,                  KC_PLUS,                KC_Y,           CTL_T(KC_H))
+COMB(ASTERISK,              KC_ASTR,                KC_O,           SFT_T(KC_A))
+COMB(AMPERSAND,             KC_AMPR,                KC_U,           ALT_T(KC_E))
+// counter parts at bottom low
+COMB(GRAVE,                 KC_GRV,                 ALT_T(KC_R),    KC_Q)
+COMB(BACKSLASH,             KC_BSLS,                SFT_T(KC_T),    KC_M)
+COMB(EQUAL,                 KC_EQL,                 CTL_T(KC_S),    KC_W)
+COMB(TILDE,                 KC_TILD,                KC_G,           KC_Z)
+COMB(UNDERSCORE,            KC_UNDS,                KC_P,           KC_K)
+COMB(MINUS,                 KC_MINS,                CTL_T(KC_H),    KC_F)
+COMB(SLASH,                 KC_SLSH,                SFT_T(KC_A),    KC_COMM)
+COMB(PIPE,                  KC_PIPE,                ALT_T(KC_E),    KC_DOT)
+
+// Punctuation
+COMB(L_BRACKET,             KC_LBRC,                KC_F,           KC_COMM)
+COMB(R_BRACKET,             KC_RBRC,                KC_COMM,        KC_DOT)
+COMB(L_CURLY_BRACE,         KC_LCBR,                KC_LSFT,        KC_F,           KC_COMM)
+COMB(R_CURLY_BRACE,         KC_RCBR,                KC_LSFT,        KC_COMM,        KC_DOT)
+COMB(L_PAREN,               KC_LPRN,                CTL_T(KC_H),    SFT_T(KC_A))
+COMB(R_PAREN,               KC_RPRN,                SFT_T(KC_A),    ALT_T(KC_E))
+COMB(L_ANGLE_BRACKET,       KC_LABK,                KC_LSFT,        CTL_T(KC_H),    SFT_T(KC_A))
+COMB(R_ANGLE_BRACKET,       KC_RABK,                KC_LSFT,        SFT_T(KC_A),    ALT_T(KC_E))
+COMB(SEMICOLON,             KC_SCLN,                KC_L,           KC_D)
+COMB(COLON,                 KC_COLN,                KC_L,           KC_C)
+
+// functions
+COMB(BOOTLOADER,            QK_BOOT,                KC_1,           KC_2,           KC_3)
