@@ -23,6 +23,21 @@
 #define TAPPING_TERM 280
 #define QUICK_TAP_TERM 175
 #define FLOW_TAP_TERM 150
+
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat
+#define TAPPING_FORCE_HOLD
+// Apply the modifier on keys that are tapped during a short hold of a modtap
 #define PERMISSIVE_HOLD
+// Immediately turn on layer if key is pressed quickly
+#define HOLD_ON_OTHER_KEY_PRESS
+
+// Combos
+#undef COMBO_TERM
+#define COMBO_TERM 35
+#define COMBO_MUST_TAP_PER_COMBO
+#define COMBO_TERM_PER_COMBO
 // combo is calculated in gallium only
 #define COMBO_ONLY_FROM_LAYER 0
+
+#define DEFAULT_XCASE_SEPARATOR KC_UNDS
+#define XCASE_DELIMITER_KEY KC_UNDS

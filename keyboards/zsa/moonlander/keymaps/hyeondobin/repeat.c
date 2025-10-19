@@ -1,6 +1,4 @@
 #include "repeat.h"
-#include <stdint.h>
-#include "action.h"
 #include "keycodes.h"
 
 uint16_t last_keycode = KC_NO;
@@ -11,12 +9,16 @@ uint16_t last_key(void) {
 }
 
 void register_key_to_repeat(uint16_t keycode) {
+    // Get the base keycode of a mod or layer tap key
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
             keycode = keycode & 0xFF;
             break;
     }
+
+    // Merge current mod state with keycode, for easy comparison when
+    // we want to do special key reverse repeats.
     uint8_t mods = get_mods() | get_oneshot_mods();
     if (mods & MOD_MASK_CTRL) keycode |= QK_LCTL;
     if (mods & MOD_MASK_SHIFT) keycode |= QK_LSFT;
@@ -35,15 +37,6 @@ void update_key(uint16_t keycode, keyrecord_t *record) {
 
 void update_repeat_key(keyrecord_t *record) {
     switch (last_keycode) {
-        case GRV:
-            tap_undead_key(record->event.pressed, KC_GRV);
-            break;
-        case TILD:
-            tap_undead_key(record->event.pressed, KC_TILD);
-            break;
-        case CIRC:
-            tap_undead_key(record->event.pressed, KC_CIRC);
-            break;
         default:
             update_key(last_keycode, record);
     }
@@ -59,4 +52,16 @@ void update_reverse_key_pairs(uint16_t a, uint16_t b, keyrecord_t *record) {
 
 void update_reverse_repeat_key(keyrecord_t *record) {
     update_reverse_key_pairs(C(KC_TAB), C(S(KC_TAB)), record);
+    update_reverse_key_pairs(C(KC_N), C(KC_P), record);
+    update_reverse_key_pairs(C(KC_F), C(KC_B), record);
+    update_reverse_key_pairs(C(KC_U), C(KC_D), record);
+    update_reverse_key_pairs(C(KC_G), C(S(KC_G)), record);
+    update_reverse_key_pairs(KC_PGUP, KC_PGDN, record);
+    update_reverse_key_pairs(KC_ASTR, KC_HASH, record);
+    update_reverse_key_pairs(KC_LCBR, KC_RCBR, record);
+    // update_reverse_key_pairs(G(KC_K), G(KC_J), record);
+    update_reverse_key_pairs(C(KC_O), C(KC_I), record);
+
+    update_reverse_key_pairs(S(KC_W), S(KC_B), record);
+    update_reverse_key_pairs(KC_U, C(KC_R), record);
 }
