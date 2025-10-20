@@ -3,9 +3,9 @@ COMBO_ENABLE = yes
 # key logging
 CONSOLLE_ENABLE = yes
 
-CAPS_WORD_ENABLE = no
+CAPS_WORD_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
-REPEAT_KEY_ENABLE = no
+REPEAT_KEY_ENABLE = yes
 #RGBLIGHT_ENABLE = no # keyboard RGB underglow
 
 # Easy definition of combos
@@ -22,9 +22,6 @@ SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
 AUDIO_ENABLE = yes
 
-SRC +=repeat.c
-SRC +=oneshot.c
-SRC +=layermodes.c
-SRC +=casemodes.c
-SRC +=tap_hold.c
+UNICODE_ENABLE = yes
 
+SRC +=numword.c

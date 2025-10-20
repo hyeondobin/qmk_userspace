@@ -3,7 +3,8 @@
 #include "quantum.h"
 #include "quantum/action.h"
 #include "quantum/quantum_keycodes.h"
-#include "oneshot.h"
+#include QMK_KEYBOARD_H
+
 #define HR_N GUI_T(KC_N)
 #define HR_R ALT_T(KC_R)
 #define HR_T SFT_T(KC_T)
@@ -26,10 +27,11 @@
 enum layers { _BAS = 0, _QWE, _TRS, _NUM, _NAV, _MOU, _SYM };
 
 enum custom_keycodes {
-    TILD = QK_USER,
+    ARROW = QK_USER,
+    TILD,
     // Repeat keys
-    REPEAT,
-    REV_REP,
+    // REPEAT,
+    // REV_REP,
 
     // Multiple chars
     QU,
@@ -55,7 +57,7 @@ enum custom_keycodes {
     WIN_ALT,
 
     // Smart caps lock and layers that turn off on certain keys
-    CAPSWORD,
+
     NUMWORD,
 
     // Layer management
@@ -84,3 +86,6 @@ enum custom_keycodes {
 #define S_TAB S(KC_TAB)
 #define SC_TAB S(C(KC_TAB))
 #define RPSHFT SFT_T(REPEAT)
+#define CAPSWORD CW_TOGG
+#define REPEAT SFT_T(QK_REP)
+#define ALTRPT QK_AREP

@@ -18,7 +18,7 @@
 
 #pragma once
 
-#define ORYX_CONFIGURATOR
+// #define ORYX_CONFIGURATOR
 
 #define TAPPING_TERM 280
 #define QUICK_TAP_TERM 175
@@ -38,9 +38,6 @@
 #define COMBO_TERM_PER_COMBO
 // combo is calculated in gallium only
 #define COMBO_ONLY_FROM_LAYER 0
-
-#define DEFAULT_XCASE_SEPARATOR KC_UNDS
-#define XCASE_DELIMITER_KEY KC_UNDS
 
 // Mouse
 #define MK_COMBINED

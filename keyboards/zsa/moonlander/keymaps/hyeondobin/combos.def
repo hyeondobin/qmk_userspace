@@ -26,15 +26,17 @@ COMB(L_CURLY_BRACE,         KC_LCBR,                KC_LSFT,        KC_F,       
 COMB(R_CURLY_BRACE,         KC_RCBR,                KC_LSFT,        KC_COMM,        KC_DOT)
 COMB(L_PAREN,               KC_LPRN,                HR_H,           HR_A)
 COMB(R_PAREN,               KC_RPRN,                HR_A,           HR_E)
-COMB(L_ANGLE_BRACKET,       KC_LABK,                KC_LSFT,        HR_H,    HR_A)
-COMB(R_ANGLE_BRACKET,       KC_RABK,                KC_LSFT,        HR_A,    HR_E)
+COMB(L_ANGLE_BRACKET,       KC_LABK,                KC_LSFT,        HR_H,           HR_A)
+COMB(R_ANGLE_BRACKET,       KC_RABK,                KC_LSFT,        HR_A,           HR_E)
 COMB(COLON,                 KC_COLN,                KC_L,           KC_C)
 
 COMB(TAB,                   KC_TAB,                 HR_R,           HR_T)
 COMB(ESCAPE,                KC_ESC,                 KC_L,           KC_D)
-COMB(ENTER,                 KC_ENT,                 HR_H,           HR_A,    HR_E)
+COMB(ENTER,                 KC_ENT,                 HR_H,           HR_A,           HR_E)
+COMB(space_comb,            KC_SPC,                 HR_T,           HR_S)
 COMB(BACKSPACE,             KC_BSPC,                KC_Y,           KC_O)
 COMB(DELETE,                KC_DEL,                 KC_O,           KC_U)
+
 
 
 // functions
