@@ -24,12 +24,12 @@
 #define QUICK_TAP_TERM 175
 #define FLOW_TAP_TERM 150
 
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat
-#define TAPPING_FORCE_HOLD
+// // Enable rapid switch from tap to hold, disables double tap hold auto-repeat
+// #define TAPPING_FORCE_HOLD
 // Apply the modifier on keys that are tapped during a short hold of a modtap
 #define PERMISSIVE_HOLD
-// Immediately turn on layer if key is pressed quickly
-#define HOLD_ON_OTHER_KEY_PRESS
+// // Immediately turn on layer if key is pressed quickly
+// #define HOLD_ON_OTHER_KEY_PRESS
 
 // Combos
 #undef COMBO_TERM
@@ -41,3 +41,10 @@
 
 #define DEFAULT_XCASE_SEPARATOR KC_UNDS
 #define XCASE_DELIMITER_KEY KC_UNDS
+
+// Mouse
+#define MK_COMBINED
+#undef MOUSEKEY_DELAY
+#define MOUSEKEY_DELAY 10
+#undef MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED 3

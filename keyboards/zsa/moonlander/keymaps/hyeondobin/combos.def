@@ -40,8 +40,10 @@ COMB(DELETE,                KC_DEL,                 KC_O,           KC_U)
 // functions
 COMB(BOOTLOADER,            QK_BOOT,                KC_1,           KC_2,           KC_3)
 COMB(capsword,              CAPSWORD,               HR_T,           HR_A)
+COMB(numw,                  NUMWORD,                KC_LSFT,        SPC_NAV)
 COMB(COPY,                  C(KC_INS),              KC_Q,           KC_M)
 COMB(PASTE,                 S(KC_INS),              KC_M,           KC_W)
 COMB(CUT,                   C(KC_X),                KC_Q,           KC_W)
 
 COMB(TOGGLEKOR,             TG_KOR,                 KC_C,           KC_Y)
+COMB(SUNDAY_COMB,           SUNDAY,                 KC_D,           KC_O)

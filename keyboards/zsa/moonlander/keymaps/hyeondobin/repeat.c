@@ -2,7 +2,7 @@
 #include "keycodes.h"
 
 uint16_t last_keycode = KC_NO;
-bool     tap_undead_key(bool key_down, uint16_t code);
+// bool     tap_undead_key(bool key_down, uint16_t code);
 
 uint16_t last_key(void) {
     return last_keycode;

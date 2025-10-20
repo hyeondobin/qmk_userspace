@@ -35,6 +35,14 @@ enum custom_keycodes {
     QU,
     SC,
 
+    SUNDAY,
+
+    // email addresses
+    EGDOBIN,
+    EGJAYLI,
+    EGPANRU,
+    ENDOBIN,
+
     // Vim
     SAVE_VIM,
 
@@ -75,3 +83,4 @@ enum custom_keycodes {
 #define C_TAB C(KC_TAB)
 #define S_TAB S(KC_TAB)
 #define SC_TAB S(C(KC_TAB))
+#define RPSHFT SFT_T(REPEAT)

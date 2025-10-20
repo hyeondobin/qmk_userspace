@@ -11,6 +11,8 @@ REPEAT_KEY_ENABLE = no
 # Easy definition of combos
 VPATH += keyboards/gboards/
 
+# Enable mouse
+MOUSEKEY_ENABLE = yes
 
 # Extra features that are nice but take space
 WPM_ENABLE = no
@@ -24,5 +26,5 @@ SRC +=repeat.c
 SRC +=oneshot.c
 SRC +=layermodes.c
 SRC +=casemodes.c
-# SRC +=.c
+SRC +=tap_hold.c
 
