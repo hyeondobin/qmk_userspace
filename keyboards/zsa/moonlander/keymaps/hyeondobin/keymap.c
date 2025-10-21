@@ -28,20 +28,6 @@
 
 #include "g/keymap_combo.h"
 
-#ifdef CONSOLE_ENABLE
-#    include "print.h"
-#endif
-
-// enum layers {
-//     _BASE,  // default layer
-//     _QWERTY,
-//     // _NAVI,
-//     _TRANS, // for easy layering
-//     _MOUSE,
-//     _NUMBER,
-//     _SYMBOL,  // symbols always on top
-// };
-
 // clang-format off
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     LAYOUT(
@@ -60,8 +46,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BSPC,    HR_N,       HR_R,       HR_T,       HR_S,       KC_G,       XXXXXXX,        XXXXXXX,    KC_P,       HR_H,       HR_A,       HR_E,       HR_I,       XXXXXXX,
         XXXXXXX,    KC_X,       KC_Q,       KC_M,       KC_W,       KC_Z,                                   KC_K,       KC_F,       KC_COMM,    KC_DOT,     KC_QUES,    XXXXXXX,
         MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    MO(_SYM),               KC_LNG1,        TG(_QWE),               MO(_NUM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-                                                        QK_REP,     MO(_MOU),     MO(_MOU),       XXXXXXX,    KC_BSPC,    SPC_NAV
+                                                        LTHUMB,     MO(_MOU),   MO(_MOU),       XXXXXXX,    KC_BSPC,    RTHUMB
     ),
+
 
     [_QWE] = LAYOUT(
         _______,    _______,    _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
@@ -179,22 +166,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     if (record->event.pressed) {
 
-    switch (keycode) {
-        case NUMWORD:
-            process_num_word_activation(record);
-        return false;
-        case TG_KOR:
-            tap_code(KC_LNG1);
-            layer_invert(_QWE);
-        return false;
-        case ARROW:
-            send_unicode_string(alt ? (shift_mods
-                                ? "\xe2\x87\x94"
-                                : "\xe2\x86\x94")
-                                : (shift_mods
-                                    ? "\xe2\x87\x92"
-                                    : "\xe2\x86\x92"));
-    }
+        switch (keycode) {
+            case NUMWORD:
+                process_num_word_activation(record);
+                return false;
+            case TG_KOR:
+                tap_code(KC_LNG1);
+                layer_invert(_QWE);
+                return false;
+            case SUNDAY:
+                send_string("1251");
+        }
     }
     return true;
 }

@@ -33,6 +33,10 @@ enum custom_keycodes {
     // REPEAT,
     // REV_REP,
 
+    // Positional key refs
+    LTHUMB,
+    RTHUMB,
+
     // Multiple chars
     QU,
     SC,
@@ -89,3 +93,5 @@ enum custom_keycodes {
 #define CAPSWORD CW_TOGG
 #define REPEAT SFT_T(QK_REP)
 #define ALTRPT QK_AREP
+#define LTHUMB QK_REP
+#define RTHUMB SPC_NAV
