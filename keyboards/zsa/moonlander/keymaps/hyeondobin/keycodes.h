@@ -5,25 +5,6 @@
 #include "quantum/quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 
-#define HR_N GUI_T(KC_N)
-#define HR_R ALT_T(KC_R)
-#define HR_T SFT_T(KC_T)
-#define HR_S CTL_T(KC_S)
-#define HR_H CTL_T(KC_H)
-#define HR_A SFT_T(KC_A)
-#define HR_E ALT_T(KC_E)
-#define HR_I GUI_T(KC_I)
-
-#define QW_A GUI_T(KC_A)
-#define QW_S ALT_T(KC_S)
-#define QW_D SFT_T(KC_D)
-#define QW_F CTL_T(KC_F)
-
-#define QW_J CTL_T(KC_J)
-#define QW_K SFT_T(KC_K)
-#define QW_L ALT_T(KC_L)
-#define QW_SCLN GUI_T(KC_SCLN)
-
 enum layers { _BAS = 0, _QWE, _TRS, _NUM, _NAV, _MOU, _SYM };
 
 enum custom_keycodes {
@@ -34,11 +15,16 @@ enum custom_keycodes {
     // REV_REP,
 
     // Positional key refs
-    LTHUMB,
-    RTHUMB,
+    LITHUMB,
+    LMTHUMB,
+    LOTHUMB,
+    RITHUMB,
+    RMTHUMB,
+    ROTHUMB,
 
     // Multiple chars
     QU,
+    ATU,
     SC,
 
     SUNDAY,
@@ -61,8 +47,8 @@ enum custom_keycodes {
     WIN_ALT,
 
     // Smart caps lock and layers that turn off on certain keys
-
     NUMWORD,
+    SYMBOL,
 
     // Layer management
     CANCEL,
@@ -82,6 +68,25 @@ enum custom_keycodes {
     TAB_MOD
 };
 
+#define HR_N GUI_T(KC_N)
+#define HR_R ALT_T(KC_R)
+#define HR_T SFT_T(KC_T)
+#define HR_S CTL_T(KC_S)
+#define HR_H CTL_T(KC_H)
+#define HR_A SFT_T(KC_A)
+#define HR_E ALT_T(KC_E)
+#define HR_I GUI_T(KC_I)
+
+#define QW_A GUI_T(KC_A)
+#define QW_S ALT_T(KC_S)
+#define QW_D SFT_T(KC_D)
+#define QW_F CTL_T(KC_F)
+
+#define QW_J CTL_T(KC_J)
+#define QW_K SFT_T(KC_K)
+#define QW_L ALT_T(KC_L)
+#define QW_SCLN GUI_T(KC_SCLN)
+
 #define xxxxxxx KC_NO
 
 #define SPC_NAV LT(_NAV, KC_SPC)
@@ -91,7 +96,13 @@ enum custom_keycodes {
 #define SC_TAB S(C(KC_TAB))
 #define RPSHFT SFT_T(REPEAT)
 #define CAPSWORD CW_TOGG
-#define REPEAT SFT_T(QK_REP)
+#define REPEAT SFT_T(KC_0)
 #define ALTRPT QK_AREP
-#define LTHUMB QK_REP
-#define RTHUMB SPC_NAV
+
+// #define LOTHUMB
+#define LMTHUMB REPEAT
+#define LITHUMB SYMBOL
+
+// #define ROTHUMB
+#define RMTHUMB SPC_NAV
+#define RITHUMB MO(_NUM)

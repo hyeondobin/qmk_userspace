@@ -15,11 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include <stdint.h>
+#include "action.h"
 #include "action_layer.h"
 #include "action_util.h"
 #include "modifiers.h"
 #include "process_key_override.h"
+#include "process_repeat_key.h"
 #include "quantum.h"
+#include "repeat_key.h"
 #include QMK_KEYBOARD_H
 
 #include "keycodes.h"
@@ -42,11 +46,11 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BAS] = LAYOUT(
         KC_EQL,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       XXXXXXX,        XXXXXXX,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_MINS,
-        KC_DEL,     KC_B,       KC_L,       KC_D,       KC_C,       KC_V,       XXXXXXX,        XXXXXXX,    KC_J,       KC_Y,       KC_O,       KC_U,       KC_QUOT,    XXXXXXX,
+        KC_DEL,     KC_B,       KC_L,       KC_D,       KC_C,       KC_V,       XXXXXXX,        XXXXXXX,    KC_J,       KC_Y,       KC_O,       KC_U,       KC_UNDS,    XXXXXXX,
         KC_BSPC,    HR_N,       HR_R,       HR_T,       HR_S,       KC_G,       XXXXXXX,        XXXXXXX,    KC_P,       HR_H,       HR_A,       HR_E,       HR_I,       XXXXXXX,
         XXXXXXX,    KC_X,       KC_Q,       KC_M,       KC_W,       KC_Z,                                   KC_K,       KC_F,       KC_COMM,    KC_DOT,     KC_QUES,    XXXXXXX,
-        MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    MO(_SYM),               KC_LNG1,        TG(_QWE),               MO(_NUM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-                                                        LTHUMB,     MO(_MOU),   MO(_MOU),       XXXXXXX,    KC_BSPC,    RTHUMB
+        MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    LITHUMB,                KC_LNG1,        TG(_QWE),               RITHUMB,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+                                                        LMTHUMB,    LOTHUMB,    MO(_MOU),       XXXXXXX,    ROTHUMB,    RMTHUMB
     ),
 
 
@@ -62,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MOU] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
         _______,   EGDOBIN,     EGJAYLI,    EGPANRU,    ENDOBIN,    _______,    _______,        _______,    MS_BTN4,    MS_WHLL,    MS_UP,      MS_WHLR,    MS_WHLU,    _______,
-        _______,   _______,     MS_BTN3,    MS_BTN2,    MS_BTN1,    _______,    _______,        _______,    MS_BTN5,   MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLD,    _______,
+        _______,   _______,     MS_BTN3,    MS_BTN2,    MS_BTN1,    _______,    _______,        _______,    MS_BTN5,    MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLD,    _______,
         _______,   _______,     _______,    _______,    _______,    _______,                                _______,    _______,    _______,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    MS_ACL0
@@ -82,13 +86,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_GRV,      KC_LABK,    KC_RABK,    KC_MINS,    KC_PIPE,    _______,        _______,    KC_CIRC,    KC_LCBR,    KC_RCBR,    KC_DLR,     ARROW,      _______,
         _______,   KC_EXLM,     KC_ASTR,    KC_SLSH,    KC_EQL,     KC_AMPR,    _______,        _______,    KC_HASH,    KC_LPRN,    KC_RPRN,    KC_SCLN,    KC_DQUO,    _______,
         _______,   KC_TILD,     KC_PLUS,    KC_LBRC,    KC_RBRC,    KC_PERC,                                KC_AT,      KC_COLN,    KC_COMM,    KC_DOT,     KC_QUOT,    _______,
-        EE_CLR,    AU_TOGG,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
+        EE_CLR,    AU_TOGG,     _______,    _______,    CLEAR,                  _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
 
     [_NUM] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
-        _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    KC_J,       _______,    _______,    _______,    _______,    _______,
+        _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    KC_J,       _______,    _______,    ATU,        _______,    _______,
         _______,   KC_6,        KC_4,       KC_0,       KC_2,       _______,    _______,        _______,    _______,    KC_3,       KC_1,       KC_5,       KC_7,       _______,
         _______,   KC_COMM,     _______,    NUM_G,      KC_8,       _______,                                KC_K,       KC_9,       KC_LPRN,    KC_RPRN,    KC_UNDS,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
@@ -120,7 +124,7 @@ bool terminate_case_modes(uint16_t keycode, const keyrecord_t *record) {
         case QU:
         case SC:
         case KC_MINS:
-            case KC_UNDS:
+        case KC_UNDS:
         case KC_DOT:
         case KC_COMM:
         case KC_DEL:
@@ -133,6 +137,7 @@ bool terminate_case_modes(uint16_t keycode, const keyrecord_t *record) {
             return record->event.pressed;
     }
 }
+
 
 // key override
 const key_override_t ques_exlm_override = ko_make_basic(MOD_MASK_SHIFT, KC_QUES, KC_EXLM);
@@ -149,20 +154,39 @@ const key_override_t *key_overrides[] = {
     &cs_rabk_override,
 };
 
+bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
+    if (keycode == REPEAT) {return false; }
+    return true;
+}
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    const uint8_t mods     = get_mods();
-    const uint8_t all_mods = (mods | get_weak_mods()
-#ifndef NO_ACTION_ONESHOT
-                              | get_oneshot_mods()
-#endif
-                              );
+void disable_oneshot_layer(void) {
+    clear_oneshot_layer_state(ONESHOT_PRESSED);
+}
 
-    const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
-    const bool    alt        = all_mods & MOD_BIT_LALT;
-    // Check numword
+bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
     if (!process_num_word(keycode, record)) {
         return false;
+    }
+    switch (keycode) {
+        case REPEAT:
+            if (record->tap.count) { // On tap.
+                // For alternate repeat key, replace the next line with
+                // alt_repeat_key_invoke(&record->event);
+                repeat_key_invoke(&record->event); // Repeat the last key.
+                return false;
+            }
+            return true;
+        case SYMBOL:
+            if (record->tap.count && record->event.pressed) {
+                if (IS_LAYER_ON(_SYM)) {
+                    clear_oneshot_layer_state(ONESHOT_PRESSED);
+                } else {
+                    set_oneshot_layer(_SYM, ONESHOT_START);
+                }
+            } else if (record->event.pressed) {
+                layer_on(_SYM);
+            }
+            return false;
     }
     if (record->event.pressed) {
 
@@ -176,8 +200,37 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case SUNDAY:
                 send_string("1251");
+                tap_code(KC_ENT);
+                return false;
+            case CLEAR:
+                layer_off(_NUM);
+                layer_off(_SYM);
+                layer_off(_NAV);
+                layer_move(_BAS);
+                return false;
+            case ATU:
+                tap_code16(KC_AT);
+                tap_code(KC_U);
+                return false;
         }
     }
     return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     const uint8_t mods     = get_mods();
+//     const uint8_t all_mods = (mods | get_weak_mods()
+// #ifndef NO_ACTION_ONESHOT
+//                               | get_oneshot_mods()
+// #endif
+//                               );
+//
+//     const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
+//     const bool    alt        = all_mods & MOD_BIT_LALT;
+
+    bool res = _process_record_user(keycode, record);
+    // Check numword
+
+    return res;
 }
 
