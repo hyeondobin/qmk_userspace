@@ -99,7 +99,7 @@ enum custom_keycodes {
 #define REPEAT SFT_T(KC_0)
 #define ALTRPT QK_AREP
 
-// #define LOTHUMB
+#define LOTHUMB TG(_MOU)
 #define LMTHUMB REPEAT
 #define LITHUMB SYMBOL
 
