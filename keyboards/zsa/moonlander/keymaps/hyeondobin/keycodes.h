@@ -49,6 +49,7 @@ enum custom_keycodes {
     // Smart caps lock and layers that turn off on certain keys
     NUMWORD,
     SYMBOL,
+    SMMOUSE,
 
     // Layer management
     CANCEL,
@@ -99,10 +100,10 @@ enum custom_keycodes {
 #define REPEAT SFT_T(KC_0)
 #define ALTRPT QK_AREP
 
-#define LOTHUMB TG(_MOU)
+#define LOTHUMB ALTRPT
 #define LMTHUMB REPEAT
 #define LITHUMB SYMBOL
 
-// #define ROTHUMB
+#define ROTHUMB SMMOUSE
 #define RMTHUMB SPC_NAV
 #define RITHUMB MO(_NUM)

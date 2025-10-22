@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include QMK_KEYBOARD_H
 #include <stdint.h>
 #include "action.h"
 #include "action_layer.h"
@@ -24,10 +25,10 @@
 #include "process_repeat_key.h"
 #include "quantum.h"
 #include "repeat_key.h"
-#include QMK_KEYBOARD_H
 
 #include "keycodes.h"
 #include "numword.h"
+#include "smart_mouse.h"
 #include "dobih.h"
 
 #include "g/keymap_combo.h"
@@ -69,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   _______,     MS_BTN3,    MS_BTN2,    MS_BTN1,    _______,    _______,        _______,    MS_BTN5,    MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLD,    _______,
         _______,   _______,     _______,    _______,    _______,    _______,                                _______,    _______,    _______,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
-                                                        _______,    _______,    _______,        _______,    _______,    MS_ACL0
+                                                        _______,    _______,    _______,        _______,    CLEAR,      MS_ACL0
     ),
 
     [_NAV] = LAYOUT(
@@ -167,6 +168,9 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
     if (!process_num_word(keycode, record)) {
         return false;
     }
+    if (!process_smart_mouse(keycode, record)) {
+        return false;
+    }
     switch (keycode) {
         case REPEAT:
             if (record->tap.count) { // On tap.
@@ -177,22 +181,30 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
             }
             return true;
         case SYMBOL:
-            if (record->tap.count && record->event.pressed) {
-                if (IS_LAYER_ON(_SYM)) {
-                    clear_oneshot_layer_state(ONESHOT_PRESSED);
+            if (record->tap.count > 0) {
+                if (record->event.pressed) {
+                    if (IS_LAYER_ON(_SYM)) {
+                        clear_oneshot_layer_state(ONESHOT_PRESSED);
+                    }
+                    else {
+                        set_oneshot_layer(_SYM, ONESHOT_START);
+                    }
+                    return false;
                 } else {
-                    set_oneshot_layer(_SYM, ONESHOT_START);
+                    clear_oneshot_layer_state(ONESHOT_PRESSED);
                 }
             } else if (record->event.pressed) {
                 layer_on(_SYM);
+                return false;
             }
-            return false;
     }
     if (record->event.pressed) {
-
         switch (keycode) {
             case NUMWORD:
                 process_num_word_activation(record);
+                return false;
+            case SMMOUSE:
+                process_smart_mouse_activation(record);
                 return false;
             case TG_KOR:
                 tap_code(KC_LNG1);

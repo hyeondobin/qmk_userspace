@@ -25,3 +25,4 @@ AUDIO_ENABLE = yes
 UNICODE_ENABLE = yes
 
 SRC +=numword.c
+SRC +=smart_mouse.c
