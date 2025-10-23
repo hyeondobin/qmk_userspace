@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_DEL,     KC_B,       KC_L,       KC_D,       KC_C,       KC_V,       XXXXXXX,        XXXXXXX,    KC_J,       KC_Y,       KC_O,       KC_U,       KC_UNDS,    XXXXXXX,
         KC_BSPC,    HR_N,       HR_R,       HR_T,       HR_S,       KC_G,       XXXXXXX,        XXXXXXX,    KC_P,       HR_H,       HR_A,       HR_E,       HR_I,       XXXXXXX,
         XXXXXXX,    KC_X,       KC_Q,       KC_M,       KC_W,       KC_Z,                                   KC_K,       KC_F,       KC_COMM,    KC_DOT,     KC_QUES,    XXXXXXX,
-        MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    LITHUMB,                KC_LNG1,        TG(_QWE),               RITHUMB,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    SYMBOL,                 KC_LNG1,        TG(_QWE),               RITHUMB,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         LMTHUMB,    LOTHUMB,    MO(_MOU),       XXXXXXX,    ROTHUMB,    RMTHUMB
     ),
 
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_GRV,      KC_LABK,    KC_RABK,    KC_MINS,    KC_PIPE,    _______,        _______,    KC_CIRC,    KC_LCBR,    KC_RCBR,    KC_DLR,     ARROW,      _______,
         _______,   KC_BSLS,     KC_ASTR,    KC_SLSH,    KC_EQL,     KC_AMPR,    _______,        _______,    KC_HASH,    KC_LPRN,    KC_RPRN,    KC_SCLN,    KC_DQUO,    _______,
         _______,   KC_TILD,     KC_PLUS,    KC_LBRC,    KC_RBRC,    KC_PERC,                                KC_AT,      KC_COLN,    KC_COMM,    KC_DOT,     KC_QUOT,    _______,
-        EE_CLR,    AU_TOGG,     _______,    _______,    CLEAR,                  _______,        _______,                _______,    _______,    _______,    _______,    _______,
+        EE_CLR,    AU_TOGG,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
 
@@ -183,20 +183,16 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
         case SYMBOL:
             if (record->tap.count > 0) {
                 if (record->event.pressed) {
-                    if (IS_LAYER_ON(_SYM)) {
-                        clear_oneshot_layer_state(ONESHOT_PRESSED);
-                    }
-                    else {
-                        set_oneshot_layer(_SYM, ONESHOT_START);
-                    }
-                    return false;
+                    set_oneshot_layer(_SYM, ONESHOT_START);
                 } else {
                     clear_oneshot_layer_state(ONESHOT_PRESSED);
                 }
-            } else if (record->event.pressed) {
-                layer_on(_SYM);
-                return false;
             }
+            // } else if (record->event.pressed) {
+            //     register_code16(MO(_SYM));
+            // } else {
+            //     unregister_code16(MO(_SYM));
+            // }
     }
     if (record->event.pressed) {
         switch (keycode) {
@@ -241,7 +237,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //     const bool    alt        = all_mods & MOD_BIT_LALT;
 
     bool res = _process_record_user(keycode, record);
-    // Check numword
 
     return res;
 }

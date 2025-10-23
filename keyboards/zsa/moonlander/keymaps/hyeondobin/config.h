@@ -23,6 +23,7 @@
 #define TAPPING_TERM 280
 #define QUICK_TAP_TERM 175
 #define FLOW_TAP_TERM 150
+#define CHORDAL_HOLD
 
 // // Enable rapid switch from tap to hold, disables double tap hold auto-repeat
 // #define TAPPING_FORCE_HOLD
