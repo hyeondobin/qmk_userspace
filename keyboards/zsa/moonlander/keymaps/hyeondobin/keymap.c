@@ -181,9 +181,14 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
             }
             return true;
         case SYMBOL:
-            if (record->tap.count > 0) {
+            if (record->tap.count) {
                 if (record->event.pressed) {
-                    set_oneshot_layer(_SYM, ONESHOT_START);
+                    if (IS_LAYER_ON(_SYM)) {
+                        clear_oneshot_layer_state(ONESHOT_PRESSED);
+                    } else {
+                        set_oneshot_layer(_SYM, ONESHOT_START);
+                    }
+                    return false;
                 } else {
                     clear_oneshot_layer_state(ONESHOT_PRESSED);
                 }
