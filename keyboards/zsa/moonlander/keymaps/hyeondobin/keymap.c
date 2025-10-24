@@ -201,6 +201,15 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
             case SMMOUSE:
                 process_smart_mouse_activation(record);
                 return false;
+            case EGDOBIN:
+                send_string("dobinhyeon@gmail.com");
+                return false;
+            case EGJAYLI:
+                send_string("jayli2558@gmail.com");
+                return false;
+            case EGPANRU:
+                send_string("panruyal@gmail.com");
+                return false;
             case TG_KOR:
                 tap_code(KC_LNG1);
                 layer_invert(_QWE);
