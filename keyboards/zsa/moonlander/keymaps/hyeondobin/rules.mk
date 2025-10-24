@@ -6,7 +6,11 @@ CONSOLLE_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
-#RGBLIGHT_ENABLE = no # keyboard RGB underglow
+
+RGBLIGHT_ENABLE = no # there's no keyboard RGB underglow in moonlander
+RGB_MATRIX_DRIVER = is31fl3731
+
+RGB_MATRIX_CUSTOM_KB = no
 
 # Easy definition of combos
 VPATH += keyboards/gboards/
@@ -20,7 +24,7 @@ WPM_ENABLE = no
 
 SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
-AUDIO_ENABLE = yes
+AUDIO_ENABLE = no
 
 UNICODE_ENABLE = yes
 

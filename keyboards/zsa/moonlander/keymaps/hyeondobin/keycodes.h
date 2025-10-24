@@ -5,7 +5,7 @@
 #include "quantum/quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 
-enum layers { _BAS = 0, _QWE, _TRS, _NUM, _NAV, _MOU, _SYM };
+enum layers { _BAS = 0, _QWE, _TRS, _NUM, _NAV, _MOU, _SYM, _LED };
 
 enum custom_keycodes {
     ARROW = QK_USER,
@@ -105,6 +105,6 @@ enum custom_keycodes {
 #define LMTHUMB REPEAT
 #define LITHUMB SYMBOL
 
-#define ROTHUMB SMMOUSE
+#define ROTHUMB TG(_LED)
 #define RMTHUMB SPC_NAV
 #define RITHUMB MO(_NUM)
