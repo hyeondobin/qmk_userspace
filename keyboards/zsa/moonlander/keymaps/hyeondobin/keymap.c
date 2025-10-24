@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_DEL,     KC_B,       KC_L,       KC_D,       KC_C,       KC_V,       XXXXXXX,        XXXXXXX,    KC_J,       KC_Y,       KC_O,       KC_U,       KC_UNDS,    XXXXXXX,
         KC_BSPC,    HR_N,       HR_R,       HR_T,       HR_S,       KC_G,       XXXXXXX,        XXXXXXX,    KC_P,       HR_H,       HR_A,       HR_E,       HR_I,       XXXXXXX,
         XXXXXXX,    KC_X,       KC_Q,       KC_M,       KC_W,       KC_Z,                                   KC_K,       KC_F,       KC_COMM,    KC_DOT,     KC_QUES,    XXXXXXX,
-        MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    SYMBOL,                 KC_LNG1,        TG(_QWE),               RITHUMB,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    LITHUMB,                KC_LNG1,        TG(_QWE),               RITHUMB,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         LMTHUMB,    LOTHUMB,    MO(_MOU),       XXXXXXX,    ROTHUMB,    RMTHUMB
     ),
 
@@ -189,22 +189,9 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
             return true;
         case SYMBOL:
             if (record->tap.count) {
-                if (record->event.pressed) {
-                    if (IS_LAYER_ON(_SYM)) {
-                        clear_oneshot_layer_state(ONESHOT_PRESSED);
-                    } else {
-                        set_oneshot_layer(_SYM, ONESHOT_START);
-                    }
-                    return false;
-                } else {
-                    clear_oneshot_layer_state(ONESHOT_PRESSED);
-                }
+                tap_code16(OSL(_SYM));
+                return false;
             }
-            // } else if (record->event.pressed) {
-            //     register_code16(MO(_SYM));
-            // } else {
-            //     unregister_code16(MO(_SYM));
-            // }
     }
     if (record->event.pressed) {
         switch (keycode) {
