@@ -95,3 +95,7 @@ COMB(CUT,               C(KC_X),                KC_Q,           KC_W)
 
 COMB(TOGGLEKOR,         TG_KOR,                 KC_C,           KC_Y)
 COMB(SUNDAY_COMB,       SUNDAY,                 KC_D,           KC_O)
+
+// vertical combo
+COMB(vcomb_lang1,       KC_LNG1,                KC_B,           HR_N)
+COMB(vcomb_LT_QWE,      TG(_QWE),               HR_I,           KC_UNDS)
