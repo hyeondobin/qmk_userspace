@@ -5,14 +5,27 @@
 #include "quantum/quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 
-enum layers { _BAS = 0, _QWE, _TRS, _NUM, _NAV, _MOU, _SYM, _LED };
+enum layers {
+    _BAS = 0,
+    _QWE,
+    _TRS,
+    _NUM,
+    _NAV,
+    _MOU,
+    _SYM,
+    _LED,
+    _FNC,
+    _GUI,
+};
 
 enum custom_keycodes {
     ARROW = QK_USER,
     TILD,
-    // Repeat keys
-    // REPEAT,
-    // REV_REP,
+
+    // layer keys
+    SPC_NAV,
+    ESC_SYM,
+    FNC_MOU,
 
     // Positional key refs
     LITHUMB,
@@ -92,6 +105,7 @@ enum custom_keycodes {
 
 #define SPC_NAV LT(_NAV, KC_SPC)
 #define ESC_SYM LT(_SYM, KC_ESC)
+// #define FNC_MOU LT(_SYM, KC_0)
 #define C_TAB C(KC_TAB)
 #define S_TAB S(KC_TAB)
 #define SC_TAB S(C(KC_TAB))
@@ -107,4 +121,4 @@ enum custom_keycodes {
 
 #define ROTHUMB TG(_LED)
 #define RMTHUMB SPC_NAV
-#define RITHUMB MO(_NUM)
+#define RITHUMB OSL(_FNC)
