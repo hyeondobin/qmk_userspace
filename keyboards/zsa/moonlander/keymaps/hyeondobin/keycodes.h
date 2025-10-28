@@ -113,7 +113,7 @@ enum custom_keycodes {
 #define CAPSWORD CW_TOGG
 #define REPEAT SFT_T(KC_0)
 #define ALTRPT QK_AREP
-#define SYMBOL LT(_SYM, KC_0)
+#define SYMBOL OSL(_SYM)
 
 #define LOTHUMB ALTRPT
 #define LMTHUMB REPEAT
