@@ -47,8 +47,8 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BAS] = LAYOUT(
         KC_EQL,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       XXXXXXX,        XXXXXXX,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_MINS,
-        KC_DEL,     KC_B,       KC_L,       KC_D,       KC_C,       KC_V,       XXXXXXX,        XXXXXXX,    KC_J,       KC_Y,       KC_O,       KC_U,       KC_UNDS,    XXXXXXX,
-        KC_BSPC,    HR_N,       HR_R,       HR_T,       HR_S,       KC_G,       XXXXXXX,        XXXXXXX,    KC_P,       HR_H,       HR_A,       HR_E,       HR_I,       XXXXXXX,
+        KC_DEL,     KC_B,       KC_L,       KC_D,       KC_C,       KC_V,       MS_WHLU,        XXXXXXX,    KC_J,       KC_Y,       KC_O,       KC_U,       KC_UNDS,    XXXXXXX,
+        KC_MEH,     HR_N,       HR_R,       HR_T,       HR_S,       KC_G,       MS_WHLD,        XXXXXXX,    KC_P,       HR_H,       HR_A,       HR_E,       HR_I,       KC_MEH,
         XXXXXXX,    KC_X,       KC_Q,       KC_M,       KC_W,       KC_Z,                                   KC_K,       KC_F,       KC_COMM,    KC_DOT,     KC_QUES,    XXXXXXX,
         MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    LITHUMB,                KC_LNG1,        TG(_QWE),               RITHUMB,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         LMTHUMB,    LOTHUMB,    MO(_MOU),       XXXXXXX,    ROTHUMB,    RMTHUMB
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWE] = LAYOUT(
         _______,    _______,    _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
         _______,    KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       _______,        _______,    KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       _______,
-        _______,    QW_A,       QW_S,       QW_D,       QW_F,       KC_G,       _______,        KC_B,       KC_H,       QW_J,       QW_K,       QW_L,       QW_SCLN,    _______,
+        _______,    QW_A,       QW_S,       QW_D,       QW_F,       KC_G,       _______,        KC_B,       KC_H,       QW_J,       QW_K,       QW_L,       QW_UNDS,    _______,
         _______,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,                                   KC_N,       KC_M,       KC_COMM,    KC_DOT,     _______,    _______,
         _______,    _______,    _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    _______
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MOU] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
         _______,   EGDOBIN,     EGJAYLI,    EGPANRU,    ENDOBIN,    _______,    _______,        _______,    MS_BTN4,    MS_WHLL,    MS_UP,      MS_WHLR,    MS_WHLU,    _______,
-        _______,   _______,     MS_BTN3,    MS_BTN2,    MS_BTN1,    _______,    _______,        _______,    MS_BTN5,    MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLD,    _______,
+        _______,   USRNAME,     MS_BTN3,    MS_BTN2,    MS_BTN1,    _______,    _______,        _______,    MS_BTN5,    MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLD,    _______,
         _______,   _______,     _______,    _______,    _______,    _______,                                _______,    _______,    _______,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    CLEAR,      MS_ACL0
@@ -76,8 +76,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
         _______,   _______,     _______,    KC_LPRN,    KC_RPRN,    _______,    _______,        _______,    _______,    KC_HOME,    KC_UP,      KC_END,     KC_PGUP,    _______,
-        _______,   _______,     _______,    KC_LBRC,    KC_RBRC,    _______,    _______,        _______,    _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    _______,
-        _______,   _______,     _______,    KC_LCBR,    KC_RCBR,    _______,                                _______,    _______,    _______,    _______,    _______,    _______,
+        _______,   KC_LGUI,     KC_LALT,    KC_LSFT,    KC_LCTL,    _______,    _______,        _______,    _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    _______,
+        _______,   _______,     _______,    KC_LCBR,    KC_RCBR,    _______,                                _______,    KC_LBRC,    KC_RBRC,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
@@ -93,9 +93,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NUM] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
-        _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    KC_J,       _______,    _______,    ATU,        _______,    _______,
+        _______,   KC_B,        KC_W,       KC_E,       _______,    _______,    _______,        _______,    KC_J,       KC_H,       KC_L,       ATU,        _______,    _______,
         _______,   KC_6,        KC_4,       KC_0,       KC_2,       _______,    _______,        _______,    _______,    KC_3,       KC_1,       KC_5,       KC_7,       _______,
-        _______,   KC_COMM,     _______,    NUM_G,      KC_8,       _______,                                KC_K,       KC_9,       KC_LPRN,    KC_RPRN,    KC_UNDS,    _______,
+        _______,   KC_COMM,     _______,    NUM_G,      KC_8,       _______,                                KC_K,       KC_9,       _______,    _______,    KC_UNDS,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
@@ -110,8 +110,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FNC] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
-        _______,   KC_F6,       KC_F4,      KC_F10,     KC_F2,      _______,    _______,        _______,    _______,    KC_F3,      KC_F1,      KC_F5,      KC_F7,      _______,
-        _______,   _______,     _______,    KC_F12,     KC_F8,      _______,                                _______,    KC_F9,      KC_F11,     _______,    _______,    _______,
+        _______,   KC_F6,       KC_F4,      KC_F10,     KC_F2,      KC_F12,     _______,        _______,    KC_F11,     KC_F3,      KC_F1,      KC_F5,      KC_F7,      _______,
+        _______,   _______,     _______,    _______,    KC_F8,      _______,                                _______,    KC_F9,      _______,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
@@ -133,6 +133,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
 };
+
+// clang-format on
 
 // Utils
 // static uint16_t last_key_down = KC_NO;
@@ -162,24 +164,21 @@ bool terminate_case_modes(uint16_t keycode, const keyrecord_t *record) {
     }
 }
 
-
 // key override
 const key_override_t ques_exlm_override = ko_make_basic(MOD_MASK_SHIFT, KC_QUES, KC_EXLM);
 const key_override_t comm_labk_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_SCLN);
-const key_override_t dot_rabk_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
-const key_override_t cs_labk_override = ko_make_basic(MOD_MASK_CS, KC_COMM, KC_LABK);
-const key_override_t cs_rabk_override = ko_make_basic(MOD_MASK_CS, KC_DOT, KC_RABK);
+const key_override_t dot_rabk_override  = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
+const key_override_t cs_labk_override   = ko_make_basic(MOD_MASK_CS, KC_COMM, KC_LABK);
+const key_override_t cs_rabk_override   = ko_make_basic(MOD_MASK_CS, KC_DOT, KC_RABK);
 
 const key_override_t *key_overrides[] = {
-    &ques_exlm_override,
-    &comm_labk_override,
-    &dot_rabk_override,
-    &cs_labk_override,
-    &cs_rabk_override,
+    &ques_exlm_override, &comm_labk_override, &dot_rabk_override, &cs_labk_override, &cs_rabk_override,
 };
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
-    if (keycode == REPEAT) {return false; }
+    if (keycode == REPEAT) {
+        return false;
+    }
     return true;
 }
 
@@ -187,7 +186,7 @@ void disable_oneshot_layer(void) {
     clear_oneshot_layer_state(ONESHOT_PRESSED);
 }
 
-bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
+bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_num_word(keycode, record)) {
         return false;
     }
@@ -234,6 +233,9 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
                 send_string("1251");
                 tap_code(KC_ENT);
                 return false;
+            case USRNAME:
+                send_string("hyeondobin");
+                return false;
             case CLEAR:
                 layer_off(_NUM);
                 layer_off(_SYM);
@@ -246,25 +248,24 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record)  {
                 return false;
             case NUM_G:
                 tap_code16(S(KC_G));
-            return false;
+                return false;
         }
     }
     return true;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     const uint8_t mods     = get_mods();
-//     const uint8_t all_mods = (mods | get_weak_mods()
-// #ifndef NO_ACTION_ONESHOT
-//                               | get_oneshot_mods()
-// #endif
-//                               );
-//
-//     const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
-//     const bool    alt        = all_mods & MOD_BIT_LALT;
+    //     const uint8_t mods     = get_mods();
+    //     const uint8_t all_mods = (mods | get_weak_mods()
+    // #ifndef NO_ACTION_ONESHOT
+    //                               | get_oneshot_mods()
+    // #endif
+    //                               );
+    //
+    //     const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
+    //     const bool    alt        = all_mods & MOD_BIT_LALT;
 
     bool res = _process_record_user(keycode, record);
 
     return res;
 }
-

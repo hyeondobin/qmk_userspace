@@ -1,57 +1,57 @@
 COMBO_REF_LAYER(_NAV, _NAV)
 COMB(comb_clear,        CLEAR,      LOTHUMB,        ROTHUMB)
-// number combos. thumb key and same side keys
-COMB(comb_1,            KC_1,       RMTHUMB,        HR_A)
-COMB(comb_3,            KC_3,       RMTHUMB,        HR_H)
-COMB(comb_5,            KC_5,       RMTHUMB,        HR_E)
-COMB(comb_7,            KC_7,       RMTHUMB,        HR_I)
-COMB(comb_9,            KC_9,       RMTHUMB,        KC_F)
-COMB(comb_atu,          ATU,        RMTHUMB,        KC_U)
+// number combos. thumb key and opposite side keys
+COMB(comb_1,            KC_1,       LMTHUMB,        HR_A)
+COMB(comb_3,            KC_3,       LMTHUMB,        HR_H)
+COMB(comb_5,            KC_5,       LMTHUMB,        HR_E)
+COMB(comb_7,            KC_7,       LMTHUMB,        HR_I)
+COMB(comb_9,            KC_9,       LMTHUMB,        KC_F)
+COMB(comb_atu,          ATU,        LMTHUMB,        KC_U)
 
-COMB(comb_0,            KC_0,       LMTHUMB,        HR_T)
-COMB(comb_2,            KC_2,       LMTHUMB,        HR_S)
-COMB(comb_4,            KC_4,       LMTHUMB,        HR_R)
-COMB(comb_6,            KC_6,       LMTHUMB,        HR_N)
-COMB(comb_8,            KC_8,       LMTHUMB,        KC_W)
+COMB(comb_0,            KC_0,       RMTHUMB,        HR_T)
+COMB(comb_2,            KC_2,       RMTHUMB,        HR_S)
+COMB(comb_4,            KC_4,       RMTHUMB,        HR_R)
+COMB(comb_6,            KC_6,       RMTHUMB,        HR_N)
+COMB(comb_8,            KC_8,       RMTHUMB,        KC_W)
 
-// Symbol combos, thumb key and opposite side keys
+// Symbol combos, thumb key and same side keys
 // Left hand
 //              top
-COMB(comb_sym_grave,    KC_GRV,                 RMTHUMB,        KC_B)
-COMB(comb_sym_labk,     KC_LABK,                RMTHUMB,        KC_L)
-COMB(comb_sym_rabk,     KC_RABK,                RMTHUMB,        KC_D)
-COMB(comb_sym_min,      KC_MINS,                RMTHUMB,        KC_C)
-COMB(comb_sym_pipe,     KC_PIPE,                RMTHUMB,        KC_V)
+COMB(comb_sym_grave,    KC_GRV,                 LMTHUMB,        KC_B)
+COMB(comb_sym_labk,     KC_LABK,                LMTHUMB,        KC_L)
+COMB(comb_sym_rabk,     KC_RABK,                LMTHUMB,        KC_D)
+COMB(comb_sym_min,      KC_MINS,                LMTHUMB,        KC_C)
+COMB(comb_sym_pipe,     KC_PIPE,                LMTHUMB,        KC_V)
 //              mid
-COMB(comb_sym_bsls,     KC_BSLS,                RMTHUMB,        HR_N)
-COMB(comb_sym_astr,     KC_ASTR,                RMTHUMB,        HR_R)
-COMB(comb_sym_slsh,     KC_SLSH,                RMTHUMB,        HR_T)
-COMB(comb_sym_eql,      KC_EQL,                 RMTHUMB,        HR_S)
-COMB(comb_sym_ampr,     KC_AMPR,                RMTHUMB,        KC_G)
+COMB(comb_sym_bsls,     KC_BSLS,                LMTHUMB,        HR_N)
+COMB(comb_sym_astr,     KC_ASTR,                LMTHUMB,        HR_R)
+COMB(comb_sym_slsh,     KC_SLSH,                LMTHUMB,        HR_T)
+COMB(comb_sym_eql,      KC_EQL,                 LMTHUMB,        HR_S)
+COMB(comb_sym_ampr,     KC_AMPR,                LMTHUMB,        KC_G)
 //              bottom
-COMB(comb_sym_tild,     KC_TILD,                RMTHUMB,        KC_X)
-COMB(comb_sym_plus,     KC_PLUS,                RMTHUMB,        KC_Q)
-COMB(comb_sym_lbrc,     KC_LBRC,                RMTHUMB,        KC_M)
-COMB(comb_sym_rbrc,     KC_RBRC,                RMTHUMB,        KC_W)
-COMB(comb_sym_perc,     KC_PERC,                RMTHUMB,        KC_Z)
+COMB(comb_sym_tild,     KC_TILD,                LMTHUMB,        KC_X)
+COMB(comb_sym_plus,     KC_PLUS,                LMTHUMB,        KC_Q)
+COMB(comb_sym_lbrc,     KC_LBRC,                LMTHUMB,        KC_M)
+COMB(comb_sym_rbrc,     KC_RBRC,                LMTHUMB,        KC_W)
+COMB(comb_sym_perc,     KC_PERC,                LMTHUMB,        KC_Z)
 // Right hand
 //              top
-COMB(comb_sym_circ,     KC_CIRC,                LMTHUMB,        KC_J)
-COMB(comb_sym_lcbr,     KC_LCBR,                LMTHUMB,        KC_Y)
-COMB(comb_sym_rcbr,     KC_RCBR,                LMTHUMB,        KC_O)
-COMB(comb_sym_dollar,   KC_DLR,                 LMTHUMB,        KC_U)
+COMB(comb_sym_circ,     KC_CIRC,                RMTHUMB,        KC_J)
+COMB(comb_sym_lcbr,     KC_LCBR,                RMTHUMB,        KC_Y)
+COMB(comb_sym_rcbr,     KC_RCBR,                RMTHUMB,        KC_O)
+COMB(comb_sym_dollar,   KC_DLR,                 RMTHUMB,        KC_U)
 //              mid
-COMB(comb_sym_hash,     KC_HASH,                LMTHUMB,        KC_P)
-COMB(comb_sym_lprn,     KC_LPRN,                LMTHUMB,        HR_H)
-COMB(comb_sym_rprn,     KC_RPRN,                LMTHUMB,        HR_A)
-COMB(comb_sym_scln,     KC_SCLN,                LMTHUMB,        HR_E)
-COMB(comb_sym_dquo,     KC_DQUO,                LMTHUMB,        HR_I)
+COMB(comb_sym_hash,     KC_HASH,                RMTHUMB,        KC_P)
+COMB(comb_sym_lprn,     KC_LPRN,                RMTHUMB,        HR_H)
+COMB(comb_sym_rprn,     KC_RPRN,                RMTHUMB,        HR_A)
+COMB(comb_sym_scln,     KC_SCLN,                RMTHUMB,        HR_E)
+COMB(comb_sym_dquo,     KC_DQUO,                RMTHUMB,        HR_I)
 //              bottom
-COMB(comb_sym_at,       KC_AT,                  LMTHUMB,        KC_K)
-COMB(comb_sym_coln,     KC_COLN,                LMTHUMB,        KC_F)
+COMB(comb_sym_at,       KC_AT,                  RMTHUMB,        KC_K)
+COMB(comb_sym_coln,     KC_COLN,                RMTHUMB,        KC_F)
 // passing comma
 // passing dot
-COMB(comb_sym_quot,     KC_QUOT,                LMTHUMB,        KC_QUES)
+COMB(comb_sym_quot,     KC_QUOT,                RMTHUMB,        KC_QUES)
 
 // shifted numbers
 //   name               key                     combo

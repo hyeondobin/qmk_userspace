@@ -39,6 +39,7 @@ enum custom_keycodes {
     QU,
     ATU,
     SC,
+    USRNAME,
 
     SUNDAY,
 
@@ -50,8 +51,6 @@ enum custom_keycodes {
 
     // Vim
     SAVE_VIM,
-
-    CLOSE_WIN,
 
     // Custom keycodes for instant processing for NUMWORD
     NUM_G,
@@ -99,7 +98,7 @@ enum custom_keycodes {
 #define QW_J CTL_T(KC_J)
 #define QW_K SFT_T(KC_K)
 #define QW_L ALT_T(KC_L)
-#define QW_SCLN GUI_T(KC_SCLN)
+#define QW_UNDS GUI_T(KC_UNDS)
 
 #define xxxxxxx KC_NO
 
