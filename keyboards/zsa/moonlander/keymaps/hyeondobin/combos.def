@@ -2,6 +2,7 @@ COMBO_REF_LAYER(_NAV, _NAV)
 COMB(comb_clear,        CLEAR,      LOTHUMB,        ROTHUMB)
 COMB(comb_enter_bas,    QWE_BAS,    HR_H,           HR_E)
 COMB(comb_username,     USRNAME,    HR_R,           HR_S)
+COMB(comb_flash,        WSLFLSH,    HR_R,   HR_T,   HR_S,   LMTHUMB)
 // number combos. thumb key and opposite side keys
 COMB(comb_1,            KC_1,       LMTHUMB,        HR_A)
 COMB(comb_3,            KC_3,       LMTHUMB,        HR_H)

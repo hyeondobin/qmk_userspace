@@ -246,6 +246,11 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_QWE);
                 tap_code(KC_ENT);
                 return false;
+            case WSLFLSH:
+                send_string("qfw");
+                tap_code(KC_ENT);
+                reset_keyboard();
+                return false;
             case ATU:
                 tap_code16(KC_AT);
                 tap_code(KC_U);

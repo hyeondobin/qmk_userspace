@@ -42,6 +42,7 @@ enum custom_keycodes {
     USRNAME,
 
     QWE_BAS,
+    WSLFLSH,
 
     SUNDAY,
 
