@@ -41,6 +41,8 @@ enum custom_keycodes {
     SC,
     USRNAME,
 
+    QWE_BAS,
+
     SUNDAY,
 
     // email addresses
