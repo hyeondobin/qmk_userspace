@@ -26,6 +26,7 @@ enum custom_keycodes {
     SPC_NAV,
     ESC_SYM,
     FNC_MOU,
+    OS_SFT_LT_NAV,
 
     // Positional key refs
     LITHUMB,
@@ -122,5 +123,5 @@ enum custom_keycodes {
 #define LITHUMB SYMBOL
 
 #define ROTHUMB OS_LSFT
-#define RMTHUMB SPC_NAV
+#define RMTHUMB OS_SFT_LT_NAV
 #define RITHUMB OSL(_FNC)

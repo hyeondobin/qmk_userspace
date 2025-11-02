@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_6,        KC_4,       KC_0,       KC_2,       _______,    _______,        _______,    _______,    KC_3,       KC_1,       KC_5,       KC_7,       _______,
         _______,   KC_COMM,     _______,    NUM_G,      KC_8,       _______,                                KC_K,       KC_9,       _______,    _______,    KC_UNDS,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
-                                                        _______,    _______,    _______,        _______,    _______,    _______
+                                                        _______,    _______,    _______,        _______,    CLEAR,      _______
     ),
     [_LED] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
@@ -202,11 +202,20 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             return true;
-        case SYMBOL:
+            // case SYMBOL:
+            //     if (record->tap.count) {
+            //         tap_code16(OSL(_SYM));
+            //         return false;
+            //     }
+        case OS_SFT_LT_NAV:
             if (record->tap.count) {
-                tap_code16(OSL(_SYM));
-                return false;
+                set_oneshot_mods(MOD_BIT(KC_LSFT));
+            } else if (record->event.pressed) {
+                layer_on(_NAV);
+            } else {
+                layer_off(_NAV);
             }
+            return false;
     }
     if (record->event.pressed) {
         switch (keycode) {
@@ -275,6 +284,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     //     const bool    alt        = all_mods & MOD_BIT_LALT;
 
     bool res = _process_record_user(keycode, record);
+
+    reset_oneshot_layer();
 
     return res;
 }
