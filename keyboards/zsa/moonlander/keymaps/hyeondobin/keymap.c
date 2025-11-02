@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
         _______,   EGDOBIN,     EGJAYLI,    EGPANRU,    ENDOBIN,    _______,    _______,        _______,    MS_BTN4,    MS_WHLL,    MS_UP,      MS_WHLR,    MS_WHLU,    _______,
         _______,   USRNAME,     MS_BTN3,    MS_BTN2,    MS_BTN1,    _______,    _______,        _______,    MS_BTN5,    MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLD,    _______,
-        _______,   _______,     _______,    _______,    _______,    _______,                                _______,    _______,    _______,    _______,    _______,    _______,
+        _______,   KC_LGUI,     KC_LALT,    KC_LSFT,    KC_LCTL,    _______,                                _______,    KC_LCTL,    KC_LSFT,    KC_LALT,    KC_LGUI,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    CLEAR,      MS_ACL0
     ),
@@ -240,7 +240,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_NUM);
                 layer_off(_SYM);
                 layer_off(_NAV);
-                layer_move(_BAS);
+                // layer_move(_BAS);
                 return false;
             case QWE_BAS:
                 layer_off(_QWE);

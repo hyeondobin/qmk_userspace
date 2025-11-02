@@ -121,6 +121,6 @@ enum custom_keycodes {
 #define LMTHUMB REPEAT
 #define LITHUMB SYMBOL
 
-#define ROTHUMB TG(_LED)
+#define ROTHUMB OS_LSFT
 #define RMTHUMB SPC_NAV
 #define RITHUMB OSL(_FNC)
