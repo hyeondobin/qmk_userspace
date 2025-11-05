@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_BSLS,     KC_ASTR,    KC_SLSH,    KC_EQL,     KC_AMPR,    _______,        _______,    KC_HASH,    KC_LPRN,    KC_RPRN,    KC_SCLN,    KC_DQUO,    _______,
         _______,   KC_TILD,     KC_PLUS,    KC_LBRC,    KC_RBRC,    KC_PERC,                                KC_AT,      KC_COLN,    KC_COMM,    KC_DOT,     KC_QUOT,    _______,
         EE_CLR,    AU_TOGG,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
-                                                        _______,    _______,    _______,        _______,    _______,    _______
+                                                        _______,    _______,    _______,        _______,    TG(_LED),   _______
     ),
 
     [_NUM] = LAYOUT(
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   RM_HUED,     RM_SATD,    RM_VALD,    RM_SPDD,    RM_PREV,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
         _______,   _______,     _______,    RM_OFF,     RM_ON,      _______,                                _______,    _______,    _______,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
-                                                        _______,    _______,    _______,        _______,    _______,    _______
+                                                        _______,    _______,    _______,        _______,    CLEAR,      _______
                     ),
     [_FNC] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_F6,       KC_F4,      KC_F10,     KC_F2,      KC_F12,     _______,        _______,    KC_F11,     KC_F3,      KC_F1,      KC_F5,      KC_F7,      _______,
         _______,   _______,     _______,    _______,    KC_F8,      _______,                                _______,    KC_F9,      _______,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
-                                                        _______,    _______,    _______,        _______,    _______,    _______
+                                                        _______,    _______,    _______,        _______,    CLEAR,      _______
     ),
     [_GUI] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
@@ -249,6 +249,8 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_NUM);
                 layer_off(_SYM);
                 layer_off(_NAV);
+                layer_off(_LED);
+                layer_off(_FNC);
                 // layer_move(_BAS);
                 return false;
             case QWE_BAS:
@@ -285,7 +287,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     bool res = _process_record_user(keycode, record);
 
-    reset_oneshot_layer();
+    // reset_oneshot_layer();
 
     return res;
 }
