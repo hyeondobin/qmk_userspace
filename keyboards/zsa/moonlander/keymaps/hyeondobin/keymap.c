@@ -203,7 +203,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return true;
         case QW_UNDS:
-            if (record->event.pressed) {
+            if (record->event.pressed && record->tap.count) {
                 tap_code16(KC_UNDS);
                 return false;
             }
