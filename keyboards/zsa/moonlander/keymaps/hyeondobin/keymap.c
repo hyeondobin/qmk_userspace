@@ -202,6 +202,12 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             return true;
+        case QW_UNDS:
+            if (record->event.pressed) {
+                tap_code16(KC_UNDS);
+                return false;
+            }
+            return true;
             // case SYMBOL:
             //     if (record->tap.count) {
             //         tap_code16(OSL(_SYM));

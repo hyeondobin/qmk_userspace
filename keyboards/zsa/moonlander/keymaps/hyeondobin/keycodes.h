@@ -82,7 +82,8 @@ enum custom_keycodes {
     OS_CTRL,
     OS_ALT,
     OS_GUI,
-    TAB_MOD
+    TAB_MOD,
+
 };
 
 #define HR_N GUI_T(KC_N)
@@ -102,7 +103,7 @@ enum custom_keycodes {
 #define QW_J CTL_T(KC_J)
 #define QW_K SFT_T(KC_K)
 #define QW_L ALT_T(KC_L)
-#define QW_UNDS GUI_T(KC_UNDS)
+#define QW_UNDS GUI_T(KC_0)
 
 #define xxxxxxx KC_NO
 
