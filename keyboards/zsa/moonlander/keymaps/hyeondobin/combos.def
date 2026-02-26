@@ -3,6 +3,12 @@ COMB(comb_clear,        CLEAR,      LOTHUMB,        ROTHUMB)
 COMB(comb_enter_bas,    QWE_BAS,    HR_H,           HR_E)
 COMB(comb_username,     USRNAME,    HR_R,           HR_S)
 COMB(comb_flash,        WSLFLSH,    HR_R,   HR_T,   HR_S,   LMTHUMB)
+COMB(comb_os_shft,      OS_LSFT,    HR_T,           HR_A)
+COMB(capsword,          CAPSWORD,   LITHUMB,        RITHUMB)
+COMB(comb_os_ctrl,      OS_LCTL,    HR_S,           HR_H)
+COMB(comb_os_alt,       OS_LALT,    HR_R,           HR_E)
+COMB(comb_os_super,     OS_LGUI,    HR_N,           HR_I)
+
 // number combos. thumb key and opposite side keys
 COMB(comb_1,            KC_1,       LMTHUMB,        HR_A)
 COMB(comb_3,            KC_3,       LMTHUMB,        HR_H)
@@ -89,7 +95,6 @@ COMB(DELETE,            KC_DEL,                 KC_O,           KC_U)
 
 // functions
 COMB(BOOTLOADER,        QK_BOOT,                KC_1,           KC_2,           KC_3)
-COMB(capsword,          CAPSWORD,               HR_T,           HR_A)
 COMB(numw,              NUMWORD,                LMTHUMB,        RMTHUMB)
 COMB(smart_mouse,       SMMOUSE,                KC_D,           KC_C)
 COMB(COPY,              C(KC_INS),              KC_Q,           KC_M)
