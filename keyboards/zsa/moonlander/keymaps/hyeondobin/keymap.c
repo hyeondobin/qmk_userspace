@@ -31,7 +31,7 @@
 #include "smart_mouse.h"
 #include "dobih.h"
 
-#include "g/keymap_combo.h"
+#include "g/keymap_combo.h" // IWYU pragma: keep
 
 // clang-format off
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
