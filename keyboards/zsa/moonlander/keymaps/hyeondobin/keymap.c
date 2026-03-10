@@ -254,8 +254,8 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case LNG_JAP:
               tap_code(KC_F20); // bind f20 to Japanese
-                layer_clear();
                 layer_on(_QWE);
+                return false;
             case SUNDAY:
                 send_string("1251");
                 tap_code(KC_ENT);
