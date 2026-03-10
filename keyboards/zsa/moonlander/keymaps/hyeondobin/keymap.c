@@ -75,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
-        _______,   _______,     _______,    KC_LPRN,    KC_RPRN,    _______,    _______,        _______,    _______,    KC_HOME,    KC_UP,      KC_END,     KC_PGUP,    _______,
-        _______,   KC_LGUI,     KC_LALT,    KC_LSFT,    KC_LCTL,    _______,    _______,        _______,    _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    _______,
-        _______,   _______,     _______,    KC_LCBR,    KC_RCBR,    _______,                                _______,    KC_LBRC,    KC_RBRC,    _______,    _______,    _______,
+        _______,   _______,     _______,    KC_LPRN,    KC_RPRN,    _______,    _______,        _______,    LNG_KOR,    KC_HOME,    KC_UP,      KC_END,     KC_PGUP,    _______,
+        _______,   KC_LGUI,     KC_LALT,    KC_LSFT,    KC_LCTL,    _______,    _______,        _______,    LNG_ENG,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    _______,
+        _______,   _______,     _______,    KC_LCBR,    KC_RCBR,    _______,                                LNG_JAP,    KC_LBRC,    KC_RBRC,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     ),
     [_FNC] = LAYOUT(
         _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
-        _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
+        _______,   _______,     KC_F22,     KC_F21,     KC_F20,     _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
         _______,   KC_F6,       KC_F4,      KC_F10,     KC_F2,      KC_F12,     _______,        _______,    KC_F11,     KC_F3,      KC_F1,      KC_F5,      KC_F7,      _______,
         _______,   _______,     _______,    _______,    KC_F8,      _______,                                _______,    KC_F9,      _______,    _______,    _______,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
@@ -244,6 +244,18 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_LNG1);
                 layer_invert(_QWE);
                 return false;
+            case LNG_KOR:
+              tap_code(KC_F22); // bind f22 to Korean
+                layer_on(_QWE);
+                return false;
+            case LNG_ENG:
+              tap_code(KC_F21); // bind f21 to English
+                layer_off(_QWE);
+                return false;
+            case LNG_JAP:
+              tap_code(KC_F20); // bind f20 to Japanese
+                layer_clear();
+                layer_on(_QWE);
             case SUNDAY:
                 send_string("1251");
                 tap_code(KC_ENT);

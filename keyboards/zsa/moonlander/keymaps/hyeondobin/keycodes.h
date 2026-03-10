@@ -72,6 +72,9 @@ enum custom_keycodes {
     CLEAR,
 
     TG_KOR,
+    LNG_KOR,
+    LNG_ENG,
+    LNG_JAP,
 
     // Instant leader key
     LEADER,
