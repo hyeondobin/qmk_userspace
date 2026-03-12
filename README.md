@@ -12,6 +12,7 @@ The goal is try implementing pre built features by myself.
 - [ ] move config to user directory
 - [ ] try implementing features from `rafaelromao`'s configuration
 - [ ] add tap-dance for thumb key to act as shift / magic / repeat / Capsword
+- [ ] change lighting according to the current layer
 
 ## Combos
 

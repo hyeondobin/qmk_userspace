@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWE] = LAYOUT(
         _______,    _______,    _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    _______,    _______,    _______,    _______,
-        _______,    KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       _______,        _______,    KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       _______,
+        _______,    KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       _______,        KC_CAPS,    KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       _______,
         _______,    QW_A,       QW_S,       QW_D,       QW_F,       KC_G,       _______,        KC_B,       KC_H,       QW_J,       QW_K,       QW_L,       QW_UNDS,    _______,
         _______,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,                                   KC_N,       KC_M,       KC_COMM,    KC_DOT,     _______,    _______,
         _______,    _______,    _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
@@ -254,7 +254,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case LNG_JAP:
               tap_code(KC_F20); // bind f20 to Japanese
-                layer_on(_QWE);
+                layer_off(_QWE);
                 return false;
             case SUNDAY:
                 send_string("1251");
