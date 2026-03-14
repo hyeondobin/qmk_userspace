@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQL,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       XXXXXXX,        XXXXXXX,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_MINS,
         MO(_MOU),   KC_B,       KC_L,       KC_D,       KC_C,       KC_V,       MS_WHLU,        XXXXXXX,    KC_J,       KC_Y,       KC_O,       KC_U,       KC_UNDS,    XXXXXXX,
         KC_MEH,     HR_N,       HR_R,       HR_T,       HR_S,       KC_G,       MS_WHLD,        XXXXXXX,    KC_P,       HR_H,       HR_A,       HR_E,       HR_I,       KC_MEH,
-        XXXXXXX,    KC_X,       KC_Q,       KC_M,       KC_W,       KC_Z,                                   KC_K,       KC_F,       KC_COMM,    KC_DOT,     KC_QUES,    XXXXXXX,
+        KC_HYPR,    KC_X,       KC_Q,       KC_M,       KC_W,       KC_Z,                                   KC_K,       KC_F,       KC_COMM,    KC_DOT,     KC_QUES,    KC_HYPR,
         MO(_SYM),   XXXXXXX,    XXXXXXX,    XXXXXXX,    LITHUMB,                KC_LNG1,        TG(_QWE),               RITHUMB,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
                                                         LMTHUMB,    LOTHUMB,    MO(_MOU),       XXXXXXX,    ROTHUMB,    RMTHUMB
     ),
