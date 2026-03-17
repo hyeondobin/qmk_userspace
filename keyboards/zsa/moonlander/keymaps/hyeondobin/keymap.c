@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MAP] = LAYOUT(
-        _______,   KC_1,        KC_2,       KC_3,       KC_4,       KC_5,       _______,        _______,    _______,    _______,    RPDFIRE,    _______,    _______,    _______,
+        _______,   KC_1,        KC_2,       KC_3,       KC_4,       KC_5,       _______,        _______,    _______,    _______,    RPD_DEL,    _______,    _______,    _______,
         _______,   KC_TAB,      KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,           _______,    _______,    KC_HOME,    KC_UP,      KC_PGUP,    _______,    _______,
         _______,   KC_LCTL,     KC_A,       KC_S,       KC_D,       KC_F,       KC_G,           _______,    KC_F5,      KC_LEFT,    KC_DOWN,    KC_RGHT,    _______,    _______,
         _______,   KC_LSFT,     KC_Z,       KC_X,       KC_C,       KC_V,                                   _______,    KC_END,     _______,    KC_PGDN,    _______,    _______,
@@ -198,8 +198,10 @@ void disable_oneshot_layer(void) {
     clear_oneshot_layer_state(ONESHOT_PRESSED);
 }
 
-bool rapid_fire_active = false;
-uint16_t rapid_fire_timer;
+bool rapid_fire_active1 = false;
+bool rapid_fire_active2 = false;
+uint16_t rapid_fire_timer1;
+uint16_t rapid_fire_timer2;
 
 bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_num_word(keycode, record)) {
@@ -237,15 +239,23 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_NAV);
             }
             return false;
-        case RPDFIRE:
+        case RPD_DEL:
             if (record->event.pressed) {
-                rapid_fire_active = true;
-                rapid_fire_timer  = timer_read();
+                rapid_fire_active1 = true;
+                rapid_fire_timer1  = timer_read();
                 tap_code(KC_DEL);
             } else {
-              rapid_fire_active =false;
+              rapid_fire_active1 =false;
             }
             return false;
+        case RPD_V:
+            if (record->event.pressed) {
+                rapid_fire_active2 = true;
+                rapid_fire_timer2  = timer_read();
+                tap_code(KC_V);
+            } else {
+                rapid_fire_active2 = false;
+            }
     }
     if (record->event.pressed) {
         switch (keycode) {
@@ -319,6 +329,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     //     const uint8_t mods     = get_mods();
     //     const uint8_t all_mods = (mods | get_weak_mods()
@@ -338,10 +349,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void matrix_scan_user(void) {
-    if (rapid_fire_active) {
-        if (timer_elapsed(rapid_fire_timer) >= 30) {
+    if (rapid_fire_active1) {
+        if (timer_elapsed(rapid_fire_timer1) >= 30) {
             tap_code(KC_DEL);
-            rapid_fire_timer = timer_read();
+            rapid_fire_timer1 = timer_read();
         }
+    }
+    if (rapid_fire_active2) {
+      if (timer_elapsed(rapid_fire_timer2) >= 30) {
+          tap_code(KC_V);
+          rapid_fire_timer2 = timer_read();
+          }
     }
 }

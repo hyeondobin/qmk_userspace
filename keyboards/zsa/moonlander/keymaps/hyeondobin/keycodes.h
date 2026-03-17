@@ -88,7 +88,8 @@ enum custom_keycodes {
     OS_GUI,
     TAB_MOD,
 
-    RPDFIRE,
+    RPD_DEL,
+    RPD_V,
 
 };
 
