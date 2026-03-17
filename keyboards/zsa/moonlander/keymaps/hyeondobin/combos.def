@@ -1,4 +1,6 @@
 COMBO_REF_LAYER(_NAV, _NAV)
+DEFAULT_REF_LAYER(_BAS)
+
 COMB(comb_clear,        CLEAR,      LOTHUMB,        ROTHUMB)
 COMB(comb_enter_bas,    QWE_BAS,    HR_H,           HR_E)
 COMB(comb_username,     USRNAME,    HR_R,           HR_S)

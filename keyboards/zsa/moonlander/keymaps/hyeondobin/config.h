@@ -38,7 +38,7 @@
 #define COMBO_MUST_TAP_PER_COMBO
 #define COMBO_TERM_PER_COMBO
 // combo is calculated in gallium only
-#define COMBO_ONLY_FROM_LAYER 0
+// #define COMBO_ONLY_FROM_LAYER 0
 
 // Mouse
 #define MK_COMBINED
