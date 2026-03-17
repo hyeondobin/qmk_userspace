@@ -16,6 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <stdbool.h>
+#include "_wait.h"
 #include "matrix.h"
 #include "timer.h"
 #include QMK_KEYBOARD_H
@@ -81,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   _______,     _______,    KC_LPRN,    KC_RPRN,    _______,    _______,        _______,    LNG_KOR,    KC_HOME,    KC_UP,      KC_END,     KC_PGUP,    _______,
         _______,   KC_LGUI,     KC_LALT,    KC_LSFT,    KC_LCTL,    _______,    _______,        _______,    LNG_ENG,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    _______,
         _______,   _______,     _______,    KC_LCBR,    KC_RCBR,    _______,                                LNG_JAP,    KC_LBRC,    KC_RBRC,    _______,    _______,    _______,
-        _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    TG(_MAP),
+        TG(_GAM),  _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    TG(_MAP),
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
 
@@ -128,11 +129,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MAP] = LAYOUT(
-        _______,   KC_1,        KC_2,       KC_3,       KC_4,       KC_5,       _______,        _______,    _______,    _______,    RPD_DEL,    _______,    _______,    _______,
-        _______,   KC_TAB,      KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,           _______,    _______,    KC_HOME,    KC_UP,      KC_PGUP,    _______,    _______,
-        _______,   KC_LCTL,     KC_A,       KC_S,       KC_D,       KC_F,       KC_G,           _______,    KC_F5,      KC_LEFT,    KC_DOWN,    KC_RGHT,    _______,    _______,
+        KC_N,      KC_1,        S(KC_1),    S(KC_2),    S(KC_5),    KC_K,       KC_Z,           _______,    _______,    RPD_V,      RPD_DEL,    _______,    _______,    _______,
+        MO(_MOU),  KC_TAB,      KC_4,       KC_W,       KC_5,       KC_6,       KC_X,           _______,    _______,    KC_HOME,    KC_UP,      KC_PGUP,    _______,    _______,
+        KC_T,      KC_ESC,      KC_A,       KC_S,       KC_D,       KC_F,       KC_G,           _______,    KC_F5,      KC_LEFT,    KC_DOWN,    KC_RGHT,    _______,    _______,
+        KC_I,      KC_H,        KC_1,       KC_2,       KC_3,       KC_V,                                   _______,    KC_END,     _______,    KC_PGDN,    _______,    _______,
+        _______,   KC_C,        KC_DOT,     KC_J,       KC_M,                   _______,        CLEAR,                  MO(_MOU),   _______,    _______,    _______,    _______,
+                                                        KC_SPC,     KC_R,       _______,        _______,    _______,    KC_INS
+    ),
+    [_GAM] = LAYOUT(
+        _______,   KC_1,        KC_2,       KC_3,       KC_4,       KC_5,       _______,        _______,    _______,    RPD_V,      RPD_DEL,    _______,    _______,    _______,
+        MO(_MOU),  KC_TAB,      KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,           _______,    _______,    KC_HOME,    KC_UP,      KC_PGUP,    _______,    _______,
+        _______,   KC_LCTL,     KC_A,       KC_S,       KC_D,       KC_F,       KC_G,           _______,    _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,    _______,    _______,
         _______,   KC_LSFT,     KC_Z,       KC_X,       KC_C,       KC_V,                                   _______,    KC_END,     _______,    KC_PGDN,    _______,    _______,
-        _______,   _______,     _______,    KC_LALT,    _______,                _______,        CLEAR,                  MO(_MOU),   _______,    _______,    _______,    _______,
+        _______,   _______,     _______,    KC_CAPS,    KC_LALT,                _______,        CLEAR,                  MO(_MOU),   _______,    _______,    _______,    _______,
                                                         KC_SPC,     _______,    _______,        _______,    _______,    KC_INS
     ),
 
@@ -306,6 +315,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_FNC);
                 layer_off(_GUI);
                 layer_off(_MAP);
+                layer_off(_GAM);
                 // layer_move(_BAS);
                 return false;
             case QWE_BAS:
@@ -315,7 +325,8 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
             case WSLFLSH:
                 send_string("qfw");
                 tap_code(KC_ENT);
-                reset_keyboard();
+                wait_ms(500);
+                /* reset_keyboard(); */
                 return false;
             case ATU:
                 tap_code16(KC_AT);

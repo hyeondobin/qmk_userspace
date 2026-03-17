@@ -11,12 +11,13 @@ enum layers {
     _TRS,
     _NUM,
     _NAV,
-    _MOU,
     _SYM,
     _LED,
     _FNC,
     _GUI,
     _MAP,
+    _GAM,
+    _MOU,
 };
 
 enum custom_keycodes {
