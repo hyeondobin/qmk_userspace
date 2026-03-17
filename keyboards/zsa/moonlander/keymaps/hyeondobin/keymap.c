@@ -15,6 +15,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include <stdbool.h>
+#include "matrix.h"
+#include "timer.h"
 #include QMK_KEYBOARD_H
 #include <stdint.h>
 #include "action.h"
@@ -78,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   _______,     _______,    KC_LPRN,    KC_RPRN,    _______,    _______,        _______,    LNG_KOR,    KC_HOME,    KC_UP,      KC_END,     KC_PGUP,    _______,
         _______,   KC_LGUI,     KC_LALT,    KC_LSFT,    KC_LCTL,    _______,    _______,        _______,    LNG_ENG,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_PGDN,    _______,
         _______,   _______,     _______,    KC_LCBR,    KC_RCBR,    _______,                                LNG_JAP,    KC_LBRC,    KC_RBRC,    _______,    _______,    _______,
-        _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
+        _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    TG(_MAP),
                                                         _______,    _______,    _______,        _______,    _______,    _______
     ),
 
@@ -122,6 +125,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   KC_X,        KC_Q,       KC_M,       KC_W,       KC_Z,                                   KC_K,       KC_F,       KC_COMM,    KC_DOT,     KC_QUES,    _______,
         _______,   _______,     _______,    _______,    _______,                _______,        _______,                _______,    _______,    _______,    _______,    _______,
                                                         _______,    _______,    _______,        _______,    _______,    _______
+    ),
+
+    [_MAP] = LAYOUT(
+        _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    _______,    RPDFIRE,    _______,    _______,    _______,
+        _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    _______,    KC_HOME,    KC_UP,      KC_PGUP,    _______,    _______,
+        _______,   _______,     _______,    _______,    _______,    _______,    _______,        _______,    KC_F5,      KC_LEFT,    KC_DOWN,    KC_RGHT,    _______,    _______,
+        _______,   _______,     _______,    _______,    _______,    _______,                                _______,    KC_END,     _______,    KC_PGDN,    _______,    _______,
+        _______,   _______,     _______,    _______,    _______,                _______,        CLEAR,                  MO(_MOU),   _______,    _______,    _______,    _______,
+                                                        _______,    _______,    _______,        _______,    _______,    KC_INS
     ),
 
     [_TRS] = LAYOUT( // for creating new layout
@@ -186,6 +198,9 @@ void disable_oneshot_layer(void) {
     clear_oneshot_layer_state(ONESHOT_PRESSED);
 }
 
+bool rapid_fire_active = false;
+uint16_t rapid_fire_timer;
+
 bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_num_word(keycode, record)) {
         return false;
@@ -220,6 +235,15 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_on(_NAV);
             } else {
                 layer_off(_NAV);
+            }
+            return false;
+        case RPDFIRE:
+            if (record->event.pressed) {
+                rapid_fire_active = true;
+                rapid_fire_timer  = timer_read();
+                tap_code(KC_DEL);
+            } else {
+              rapid_fire_active =false;
             }
             return false;
     }
@@ -265,10 +289,13 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case CLEAR:
                 layer_off(_NUM);
-                layer_off(_SYM);
                 layer_off(_NAV);
+                layer_off(_MOU);
+                layer_off(_SYM);
                 layer_off(_LED);
                 layer_off(_FNC);
+                layer_off(_GUI);
+                layer_off(_MAP);
                 // layer_move(_BAS);
                 return false;
             case QWE_BAS:
@@ -308,4 +335,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // reset_oneshot_layer();
 
     return res;
+}
+
+void matrix_scan_user(void) {
+    if (rapid_fire_active) {
+        if (timer_elapsed(rapid_fire_timer) >= 30) {
+            tap_code(KC_DEL);
+            rapid_fire_timer = timer_read();
+        }
+    }
 }

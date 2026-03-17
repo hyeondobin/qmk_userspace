@@ -16,6 +16,7 @@ enum layers {
     _LED,
     _FNC,
     _GUI,
+    _MAP,
 };
 
 enum custom_keycodes {
@@ -86,6 +87,8 @@ enum custom_keycodes {
     OS_ALT,
     OS_GUI,
     TAB_MOD,
+
+    RPDFIRE,
 
 };
 
